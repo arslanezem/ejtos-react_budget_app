@@ -11,3 +11,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+.round-button {
+    border-radius: 50%;
+    padding: 10px 15px; 
+    color: white;
+    cursor: pointer;
+}
+
+.button-text {
+    font-size: 24px; 
+    font-weight: bold;
+}
+
+.green-button {
+    background-color: rgb(79, 204, 79);
+    border: none;
+}
+
+.red-button {
+    background-color: rgb(198, 6, 6);
+    border: none;
+}
+
+/* .custom-alert {
+    background-color: lightgreen;
+    padding: 10px;
+    border: 1px solid #ddd;  Ajoutez une bordure si nécessaire 
+    color: white;  Couleur du texte 
+} 
+*/
+
+.custom-dropdown {
+    background-color: lightgreen;
+    padding: 10px;
+    border: 1px solid rgb(221, 221, 221); /* Ajoutez une bordure si nécessaire */
+    color: rgb(255, 255, 255); /* Couleur du texte */
+}
+
+.custom-dropdown option {
+    color: black; /* Couleur du texte pour les options non survolées */
+}
+
+.custom-dropdown option:hover {
+    background-color: black;
+    color: rgb(189, 189, 189);
+}

@@ -3,7 +3,7 @@ import { TiDelete } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
-    const { dispatch } = useContext(AppContext);
+    const { dispatch, currency } = useContext(AppContext);
 
     const handleDeleteExpense = () => {
         dispatch({
@@ -25,14 +25,57 @@ const ExpenseItem = (props) => {
 
     }
 
+    const decreaseAllocation = (name) => {
+        const expense = {
+            name: name,
+            cost: 10,
+        };
+
+        dispatch({
+            type: 'RED_EXPENSE',
+            payload: expense
+        });
+
+    }
+
     return (
         <tr>
         <td>{props.name}</td>
-        <td>£{props.cost}</td>
-        <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td>
+        <td>{getCurrencySymbol(currency)}{props.cost}</td>
+        <td>
+            <button className="round-button green-button">
+                <span className="button-text" onClick={event => increaseAllocation(props.name)}>
+                    +
+                </span>
+            </button>
+        </td>
+        <td>
+            <button className="round-button red-button">
+                <span className="button-text" onClick={event => decreaseAllocation(props.name)}>
+                    -
+                </span>
+            </button>
+        </td>
         <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
         </tr>
     );
 };
+
+// Fonction utilitaire pour obtenir le symbole de la devise en fonction de la localisation
+const getCurrencySymbol = (currency) => {
+    switch (currency) {
+        case '$':
+            return '$';
+        case '£':
+            return '£';
+        case '€':
+            return '€';
+        case '₹':
+            return '₹';
+        default:
+            return '£';
+    }
+};
+
 
 export default ExpenseItem;
